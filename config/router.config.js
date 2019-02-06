@@ -1,5 +1,16 @@
 export default [
-  { path: '/qrcode', component: './QrCode' },
+  {
+    path: '/fe',
+    component: '../layouts/BasicLayout',
+    routes: [
+      {
+        path: '/fe/QrCode',
+        component: './QrCode',
+      }
+    ],
+
+
+  },
 
 
   // user
