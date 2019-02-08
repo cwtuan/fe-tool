@@ -63,12 +63,12 @@ class BasicLayout extends React.Component {
       dispatch,
       route: { routes, authority },
     } = this.props;
-    dispatch({
-      type: 'user/fetchCurrent',
-    });
-    dispatch({
-      type: 'setting/getSetting',
-    });
+    // dispatch({
+    //   type: 'user/fetchCurrent',
+    // });
+    // dispatch({
+    //   type: 'setting/getSetting',
+    // });
     dispatch({
       type: 'menu/getMenuData',
       payload: { routes, authority },
@@ -190,19 +190,19 @@ class BasicLayout extends React.Component {
             minHeight: '100vh',
           }}
         >
-          <Header
+          {/* <Header
             menuData={menuData}
             handleMenuCollapse={this.handleMenuCollapse}
             logo={logo}
             isMobile={isMobile}
             {...this.props}
-          />
+          /> */}
           <Content className={styles.content} style={contentStyle}>
             <Authorized authority={routerConfig} noMatch={<Exception403 />}>
               {children}
             </Authorized>
           </Content>
-          <Footer />
+          {/* <Footer /> */}
         </Layout>
       </Layout>
     );

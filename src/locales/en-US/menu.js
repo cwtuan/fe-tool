@@ -1,4 +1,5 @@
 export default {
+  'menu.qrcode': 'QR Code',
   'menu.home': 'Home',
   'menu.dashboard': 'Dashboard',
   'menu.dashboard.analysis': 'Analysis',

@@ -53,6 +53,7 @@ if (process.env.APP_TYPE === 'site') {
 }
 
 export default {
+  history: 'hash',
   // add for transfer to umi
   plugins,
   define: {
@@ -71,6 +72,10 @@ export default {
   },
   externals: {
     '@antv/data-set': 'DataSet',
+    'react': 'React',
+    "react-dom": "ReactDOM",
+    // 'moment': 'moment',
+    // "_": "lodash"
   },
   // proxy: {
   //   '/server/api/': {

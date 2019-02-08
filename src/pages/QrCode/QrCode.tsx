@@ -1,38 +1,16 @@
 import React, { Component, ChangeEvent } from 'react';
-// import { connect } from 'dva';
-// import { formatMessage, FormattedMessage } from 'umi/locale';
-// import Link from 'umi/link';
 import { FormComponentProps } from "antd/lib/form/Form";
-import { Form, Input } from 'antd';
-// import styles from './QrCode.less';
+import { Input } from 'antd';
 const styles = require("./QrCode.less");
-const FormItem = Form.Item;
 import QRCode from 'qrcode';
-import { debug } from 'util';
-
-
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 7 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 12 },
-    md: { span: 10 },
-  },
-};
 
 interface Props extends FormComponentProps {
-
 }
 
 interface State {
   text: string;
   qrCodeData: string;
 }
-
-
 
 // @Form.create()
 export default class QrCode extends Component<Props, State> {
@@ -43,7 +21,6 @@ export default class QrCode extends Component<Props, State> {
   }
 
   private onTextChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log('text', e.target.value);
     this.setState({ text: e.target.value }, () => {
       this.generateQR();
     });
@@ -56,7 +33,7 @@ export default class QrCode extends Component<Props, State> {
       return;
     }
     try {
-      const qrCodeData: string = await QRCode.toDataURL(text);
+      const qrCodeData: string = await QRCode.toDataURL(text, { scale: 10 });
       this.setState({ qrCodeData });
     } catch (err) {
       console.error(err)
@@ -73,8 +50,8 @@ export default class QrCode extends Component<Props, State> {
     const { text, qrCodeData } = this.state;
     return (
       <div className={styles.main}>
-        请输入文字，将会产生二维码(QR Code)：
-        <Input defaultValue={text} allowClear onChange={this.onTextChange} />
+        <h2>Input Text to Generate QR Code:</h2>
+        <Input className="mgb10" defaultValue={text} allowClear onChange={this.onTextChange} />
         {!!qrCodeData && <img className={styles.qrCodeImg} src={qrCodeData} />}
       </div>
     );
