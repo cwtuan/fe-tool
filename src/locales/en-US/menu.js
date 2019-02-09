@@ -1,5 +1,6 @@
 export default {
   'menu.qrcode': 'QR Code',
+  'menu.randompassword': 'Random Password',
   'menu.home': 'Home',
   'menu.dashboard': 'Dashboard',
   'menu.dashboard.analysis': 'Analysis',
