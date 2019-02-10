@@ -33,7 +33,7 @@ export default class QrCode extends Component<Props, State> {
       return;
     }
     try {
-      const qrCodeData: string = await QRCode.toDataURL(text, { scale: 10 });
+      const qrCodeData: string = await QRCode.toDataURL(text, { scale: 20 });
       this.setState({ qrCodeData });
     } catch (err) {
       console.error(err)
@@ -50,9 +50,13 @@ export default class QrCode extends Component<Props, State> {
     const { text, qrCodeData } = this.state;
     return (
       <div className={styles.main}>
-        <h2>Input Text to Generate QR Code:</h2>
-        <Input className="mgb10" defaultValue={text} allowClear onChange={this.onTextChange} />
-        {!!qrCodeData && <img className={styles.qrCodeImg} src={qrCodeData} />}
+        <h1>QR Code Generator</h1>
+        <div className={styles.content}>
+          <Input className="mgb10" defaultValue={text} allowClear
+          placeholder="Input Text To Generate QR Code"
+            onChange={this.onTextChange} />
+          {!!qrCodeData && <img className={styles.qrCodeImg} src={qrCodeData} />}
+        </div>
       </div>
     );
   }

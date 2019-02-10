@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { FormComponentProps, WrappedFormUtils } from "antd/lib/form/Form";
-import { Form, notification, Button, Checkbox, InputNumber } from 'antd';
+import { Form, notification, Button, Checkbox, InputNumber, Icon, Input } from 'antd';
 import { formItemLayout } from '@/core/constants';
 import copy from 'copy-to-clipboard';
+import cx from 'classnames';
 const CheckboxGroup = Checkbox.Group;
 const styles = require("./RandomPassword.less");
 
@@ -38,7 +39,7 @@ class PasswordConfigForm extends Component<FormProps, FormState> {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <Form className="login-form" onChange={this.onChange}>
+      <Form layout="horizontal" className="login-form" onChange={this.onChange}>
         <Form.Item
           {...formItemLayout}
           label="Password Length"
@@ -74,12 +75,14 @@ interface Props {
 
 interface State {
   password: string,
+  isRotating: boolean;
 }
 
 
 export default class RandomPassword extends Component<Props, State> {
 
   state = {
+    isRotating: false,
     password: '',
   }
 
@@ -118,10 +121,35 @@ export default class RandomPassword extends Component<Props, State> {
   }
 
   private renderPassword = (password: string) => {
-    return (<div
-      onClick={() => { copy(password); notification.success({ message: 'Password Copied!' }) }}
-      className={styles.password}>{password}
-    </div>);
+    const { isRotating } = this.state;
+    return (
+      <div>
+        <span>
+          <Input value={password} className={styles.password}></Input>
+          <Button
+            className="mgl5 mgr5"
+            // type="primary"
+            onClick={() => {
+              this.setState({ isRotating: true });
+              setTimeout(() => {
+                this.setState({ isRotating: false });
+              }, 1000);
+              this.generatePassword();
+            }}
+          >
+            <Icon type="reload" className={cx({ rotate: isRotating })} />
+            Re-generate
+          </Button>
+          <Button
+            type="primary"
+            onClick={() => {
+              copy(password);
+              notification.success({ message: 'Password Copied!' });
+            }}
+          >Copy</Button>
+        </span>
+      </div>
+    );
   }
 
   render() {
@@ -129,10 +157,11 @@ export default class RandomPassword extends Component<Props, State> {
     const { password } = this.state;
     return (
       <div className={styles.main}>
-        <h2>Random Password Generator</h2>
-        <WrappedPasswordConfigForm onChange={this.onChange} ref="configForm" />
-        <Button type="primary" onClick={this.generatePassword}>Re-generate</Button>
-        {this.renderPassword(password)}
+        <h1>Random Password Generator</h1>
+        <div className={styles.content}>
+          <WrappedPasswordConfigForm onChange={this.onChange} ref="configForm" />
+          {this.renderPassword(password)}
+        </div>
       </div>
     );
   }

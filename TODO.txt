@@ -1,4 +1,4 @@
-hash filename
+bug: Password Generator的number input，上下改数字，没触发form onchange
 https://github.com/settings/two_factor_authentication/recovery_codes
 
 
