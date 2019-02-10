@@ -158,7 +158,7 @@ export default class RandomPassword extends Component<Props, State> {
     const { password } = this.state;
     return (
       <div className={styles.main}>
-        <h1>Random Password Generator</h1>
+        <h1>Online Random Password Generator</h1>
         <div className={styles.content}>
           <WrappedPasswordConfigForm onChange={this.onChange} ref="configForm" />
           {this.renderPassword(password)}

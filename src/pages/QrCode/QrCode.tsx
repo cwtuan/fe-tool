@@ -50,7 +50,7 @@ export default class QrCode extends Component<Props, State> {
     const { text, qrCodeData } = this.state;
     return (
       <div className={styles.main}>
-        <h1>QR Code Generator</h1>
+        <h1>Online QR Code Generator</h1>
         <div className={styles.content}>
           <Input className="mgb10" defaultValue={text} allowClear
           placeholder="Input Text To Generate QR Code"

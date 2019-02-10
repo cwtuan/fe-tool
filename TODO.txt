@@ -1,6 +1,6 @@
-bug: Password Generator的number input，上下改数字，没触发form onchange
+support https
+intl
 https://github.com/settings/two_factor_authentication/recovery_codes
-
-
+deploy script: scp to sftp
 --learn--
 <Suspense fallback={<PageLoading />}>
