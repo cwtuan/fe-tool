@@ -48,7 +48,8 @@ class PasswordConfigForm extends Component<FormProps, FormState> {
             initialValue: 32,
             rules: [{ required: true }],
           })(
-            <InputNumber />
+            // Form下的InputNumber上下按钮改值时，不会触发Form的OnChange: https://github.com/ant-design/ant-design/issues/14771
+            <InputNumber onChange={this.onChange}/>
           )}
         </Form.Item>
         <Form.Item
