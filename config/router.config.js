@@ -6,8 +6,9 @@ export default [
     authority: ['admin', 'user'],
     routes: [
       { path: '/', redirect: '/QrCode' },
-      { path: '/QrCode', name: 'qrcode', component: './QrCode' },
-      { path: '/RandomPassword', name: 'randompassword', component: './RandomPassword' },
+      { path: '/QrCode', name: 'QR Code', component: './QrCode' },
+      { path: '/RandomPassword', name: 'Random Password', component: './RandomPassword' },
+      { path: '/JsonFormatter', name: 'JSON Formatter', component: './JsonFormatter' },
     ],
   },
 
