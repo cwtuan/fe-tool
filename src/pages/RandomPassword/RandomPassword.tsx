@@ -124,7 +124,7 @@ export default class RandomPassword extends Component<Props, State> {
   private renderPassword = (password: string) => {
     const { isRotating } = this.state;
     return (
-      <div>
+      <div className={styles.passwordContainer}>
         <span>
           <Input value={password} className={styles.password}></Input>
           <Button

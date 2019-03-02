@@ -16,7 +16,7 @@ interface State {
 export default class QrCode extends Component<Props, State> {
 
   state = {
-    text: 'Please Input Text',
+    text: 'https://bit.ly/tool-qrcode',
     qrCodeData: null,
   }
 
